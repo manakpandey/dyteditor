@@ -1,59 +1,63 @@
 @import "../../scss/fonts";
 @import "../../scss/colors";
 
-.de-editor {
-  position: relative;
+.de-editor_wrapper {
   width: 100%;
-  min-width: 100%;
-  min-height: 100%;
-  height: 100%;
-  max-height: 100%;
-  overflow: auto;
-
-  .de-editor_code {
-    position: absolute;
-    top: 0;
-    left: 0;
+  flex: 1 1 auto;
+  .de-editor {
+    position: relative;
+    width: 100%;
     min-width: 100%;
-    max-width: 100%;
     min-height: 100%;
-    height: auto;
-    background: transparent;
-    white-space: pre-wrap;
-    padding: 1rem;
-    border: none;
-    word-wrap: break-word;
-    word-break: break-all;
-    font-size: 1rem;
-    line-height: 1.5em;
-    box-sizing: border-box;
+    height: 100%;
+    max-height: 100%;
+    overflow: auto;
 
-    &.text {
-      opacity: 1;
-      margin: 0;
-      background: $black;
-      resize: none;
-      color: transparent;
-      caret-color: $white;
-      font-family: $code;
-    }
-
-    &.highlight {
-      z-index: 10;
-      margin: 0;
-      pointer-events: none;
-      font-family: $code;
-    }
-
-    .de-editor_codeblock {
+    .de-editor_code {
       position: absolute;
-      max-width: 100%;
       top: 0;
       left: 0;
-      margin: 0;
+      min-width: 100%;
+      max-width: 100%;
+      min-height: 100%;
+      height: auto;
+      background: transparent;
+      white-space: pre-wrap;
       padding: 1rem;
-      display: block;
-      font-family: $code;
+      border: none;
+      word-wrap: break-word;
+      word-break: break-all;
+      font-size: 1rem;
+      line-height: 1.5em;
+      box-sizing: border-box;
+
+      &.text {
+        opacity: 1;
+        margin: 0;
+        background: $black;
+        resize: none;
+        color: transparent;
+        caret-color: $white;
+        font-family: $code;
+      }
+
+      &.highlight {
+        z-index: 10;
+        margin: 0;
+        pointer-events: none;
+        font-family: $code;
+      }
+
+      .de-editor_codeblock {
+        position: absolute;
+        max-width: 100%;
+        top: 0;
+        left: 0;
+        margin: 0;
+        padding: 1rem;
+        display: block;
+        font-family: $code;
+      }
     }
   }
 }

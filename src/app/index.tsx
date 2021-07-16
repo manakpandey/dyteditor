@@ -10,6 +10,31 @@ function App() {
   const [css, setCss] = useState("");
   const [js, setJs] = useState("");
 
+  const editorOnChange = (c: string) => {
+    switch (file) {
+      case "javascript":
+        setJs(c);
+        break;
+      case "html":
+        setHtml(c);
+        break;
+      case "css":
+        setCss(c);
+        break;
+    }
+  };
+
+  const editorCode = () => {
+    switch (file) {
+      case "javascript":
+        return js;
+      case "html":
+        return html;
+      case "css":
+        return css;
+    }
+  };
+
   return (
     <div className={"de-dyteditor"}>
       <div className={"de-ide"}>
@@ -19,7 +44,7 @@ function App() {
             setFile(f);
           }}
         />
-        <Editor language={file} />
+        <Editor language={file} text={editorCode()} onChange={editorOnChange} />
       </div>
       <div className={"de-preview"}></div>
     </div>

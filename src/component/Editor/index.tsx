@@ -8,10 +8,15 @@ import "./index.scss";
 
 interface IEditor {
   language: "html" | "javascript" | "css";
+  text: string;
+  onChange: (c: string) => void;
 }
 
-export default function Editor({ language }: IEditor): ReactElement {
-  const [text, setText] = useState("");
+export default function Editor({
+  language,
+  text,
+  onChange,
+}: IEditor): ReactElement {
   const [taHeight, setTaHeight] = useState(0);
   const ref = React.createRef<HTMLTextAreaElement>();
 
@@ -20,7 +25,7 @@ export default function Editor({ language }: IEditor): ReactElement {
   }, [language, text]);
 
   const handleOnChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setText(e.target.value);
+    onChange(e.target.value);
     if (ref.current?.scrollHeight) setTaHeight(ref.current?.scrollHeight);
   };
 
@@ -33,31 +38,31 @@ export default function Editor({ language }: IEditor): ReactElement {
         "    " +
         text.substring(startPos, text.length);
       e.preventDefault();
-      setText(v);
+      onChange(v);
     }
   };
 
-  useEffect(() => {}, [text]);
-
   return (
-    <div className={"de-editor"}>
-      <textarea
-        ref={ref}
-        className={"de-editor_code text"}
-        spellCheck={false}
-        value={text}
-        style={{ height: taHeight }}
-        onChange={handleOnChange}
-        onKeyDown={handleKeyDown}
-      />
-      <pre
-        className={"de-editor_code highlight line-numbers"}
-        style={{ height: taHeight }}
-      >
-        <code className={`de-editor_codeblock language-${language}`}>
-          {text}
-        </code>
-      </pre>
+    <div className={"de-editor_wrapper"}>
+      <div className={"de-editor"}>
+        <textarea
+          ref={ref}
+          className={"de-editor_code text"}
+          spellCheck={false}
+          value={text}
+          style={{ height: taHeight }}
+          onChange={handleOnChange}
+          onKeyDown={handleKeyDown}
+        />
+        <pre
+          className={"de-editor_code highlight line-numbers"}
+          style={{ height: taHeight }}
+        >
+          <code className={`de-editor_codeblock language-${language}`}>
+            {text}
+          </code>
+        </pre>
+      </div>
     </div>
   );
 }
