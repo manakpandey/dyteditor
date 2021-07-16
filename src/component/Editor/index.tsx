@@ -30,7 +30,6 @@ export default function Editor({
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    console.log(e.currentTarget.selectionStart);
     if (e.key === "Tab") {
       const startPos = e.currentTarget.selectionStart;
       const v =

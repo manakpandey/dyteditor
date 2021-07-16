@@ -3,6 +3,7 @@ import "./index.scss";
 import Editor from "../component/Editor";
 import Files from "../component/Files";
 import { useState } from "react";
+import Preview from "../component/Preview";
 
 function App() {
   const [file, setFile] = useState<"html" | "css" | "javascript">("html");
@@ -46,7 +47,9 @@ function App() {
         />
         <Editor language={file} text={editorCode()} onChange={editorOnChange} />
       </div>
-      <div className={"de-preview"}></div>
+      <div className={"de-preview"}>
+        <Preview html={html} css={css} js={js} />
+      </div>
     </div>
   );
 }
