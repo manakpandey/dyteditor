@@ -2,4 +2,14 @@
   width: 100%;
   min-height: 100%;
   height: 100%;
+  display: flex;
+
+  .de-ide {
+    flex: 1;
+    min-height: 100%;
+    height: 100%;
+  }
+  .de-preview{
+    flex:1;
+  }
 }

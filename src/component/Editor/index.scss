@@ -1,4 +1,5 @@
 @import "../../scss/fonts";
+@import "../../scss/colors";
 
 .de-editor {
   position: relative;
@@ -27,14 +28,13 @@
     line-height: 1.5em;
     box-sizing: border-box;
 
-
     &.text {
       opacity: 1;
       margin: 0;
-      background: #272822;
+      background: $black;
       resize: none;
       color: transparent;
-      caret-color: #fff;
+      caret-color: $white;
       font-family: $code;
     }
 
