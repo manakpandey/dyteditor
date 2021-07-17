@@ -3,7 +3,7 @@ import { useState } from "react";
 import { ReactElement } from "react";
 import Prism from "prismjs";
 import { useEffect } from "react";
-import "./prism.css";
+// import "./prism.css";
 import "./index.scss";
 
 interface IEditor {
@@ -54,7 +54,7 @@ export default function Editor({
           onKeyDown={handleKeyDown}
         />
         <pre
-          className={"de-editor_code highlight line-numbers"}
+          className={"de-editor_code highlight"}
           style={{ height: taHeight }}
         >
           <code className={`de-editor_codeblock language-${language}`}>

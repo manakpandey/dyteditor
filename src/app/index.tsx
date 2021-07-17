@@ -81,12 +81,10 @@ function App() {
       const link = `${window.location.host}/${code}`;
       navigator.clipboard.writeText(link);
       addNotification({
-        title: (
-          <div className="de-notif_title">Link Generated Successfully</div>
-        ),
+        title: <div className="de-notif_title">Copied to clipboard!</div>,
         message: (
           <div className={"de-notif_msg"}>
-            <div>Copied to Clipboard!</div>
+            <div>Shareable link generated.</div>
             <code className={"de-notif_code"}>
               {window.location.host}/{code}
             </code>
