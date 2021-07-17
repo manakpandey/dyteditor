@@ -9,6 +9,7 @@ import generateLink from "../utils/generateLink";
 import { useEffect } from "react";
 import getDataFromLink from "../utils/getDataFromLink";
 import Notification, { addNotification } from "../component/Notification";
+import Preloader from "../component/Preloader";
 
 function App() {
   const [file, setFile] = useState<"html" | "css" | "javascript">("html");
@@ -16,6 +17,7 @@ function App() {
   const [css, setCss] = useState("");
   const [js, setJs] = useState("");
   const [isSharing, setIsSharing] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     initialize();
@@ -30,6 +32,7 @@ function App() {
       setCss(res.css);
       setJs(res.js);
     }
+    setLoading(false);
   };
 
   const editorOnChange = (c: string) => {
@@ -92,6 +95,10 @@ function App() {
       });
     }
   };
+
+  if (loading) {
+    return <Preloader />;
+  }
 
   return (
     <div className={"de-dyteditor"}>

@@ -1,0 +1,23 @@
+@import "../../scss/fonts";
+@import "../../scss/colors";
+
+.de-preloader {
+  background-color: $black;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  & > * {
+    margin: 12px;
+  }
+
+  .de-heading {
+    font-family: $code;
+    color: $white;
+    font-weight: bolder;
+    font-size: 32px;
+  }
+}
