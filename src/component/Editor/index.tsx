@@ -45,6 +45,7 @@ export default function Editor({
     <div className={"de-editor_wrapper"}>
       <div className={"de-editor"}>
         <textarea
+          data-gramm_editor="false"
           ref={ref}
           className={"de-editor_code text"}
           spellCheck={false}

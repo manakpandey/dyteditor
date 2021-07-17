@@ -10,7 +10,7 @@ interface IHeaderProps {
 
 export default function Header({ onShare, isSharing }: IHeaderProps) {
   return (
-    <header className="de-header">
+    <div className="de-header">
       <div />
       <div className={"de-heading"}>Editor_</div>
       <div
@@ -20,6 +20,6 @@ export default function Header({ onShare, isSharing }: IHeaderProps) {
       >
         {isSharing ? <Spinner /> : <Share />}
       </div>
-    </header>
+    </div>
   );
 }

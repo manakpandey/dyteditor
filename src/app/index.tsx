@@ -12,6 +12,7 @@ import Notification, { addNotification } from "../component/Notification";
 import Preloader from "../component/Preloader";
 import Helmet from "react-helmet";
 import pathMaker from "../utils/pathMaker";
+import Switch from "../icons/switch";
 
 function App() {
   const [file, setFile] = useState<"html" | "css" | "javascript">("html");
@@ -20,6 +21,8 @@ function App() {
   const [js, setJs] = useState("");
   const [isSharing, setIsSharing] = useState(false);
   const [loading, setLoading] = useState(true);
+
+  const [showPreview, setShowPreview] = useState(false);
 
   useEffect(() => {
     initialize();
@@ -111,7 +114,7 @@ function App() {
       <Notification />
       <Header onShare={() => handleShare()} isSharing={isSharing} />
       <div className="de-editor_window">
-        <div className={"de-ide"}>
+        <div className={`de-ide ${showPreview ? "hide" : ""}`}>
           <Files
             active={file}
             onChange={(f: "html" | "css" | "javascript") => {
@@ -124,9 +127,12 @@ function App() {
             onChange={editorOnChange}
           />
         </div>
-        <div className={"de-preview"}>
+        <div className={`de-preview ${!showPreview ? "hide" : ""}`}>
           <Preview html={html} css={css} js={js} />
         </div>
+      </div>
+      <div className="de-switch" onClick={() => setShowPreview(!showPreview)}>
+        <Switch />
       </div>
     </div>
   );
