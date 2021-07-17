@@ -10,6 +10,8 @@ import { useEffect } from "react";
 import getDataFromLink from "../utils/getDataFromLink";
 import Notification, { addNotification } from "../component/Notification";
 import Preloader from "../component/Preloader";
+import Helmet from "react-helmet";
+import pathMaker from "../utils/pathMaker";
 
 function App() {
   const [file, setFile] = useState<"html" | "css" | "javascript">("html");
@@ -25,7 +27,7 @@ function App() {
 
   const initialize = async () => {
     const res = await getDataFromLink({
-      code: window.location.pathname.substring(1),
+      code: window.location.hash?.substring(1),
     });
     if (res) {
       setHtml(res.html);
@@ -78,16 +80,14 @@ function App() {
         type: "danger",
       });
     } else {
-      const link = `${window.location.host}/${code}`;
+      const link = pathMaker(code as string);
       navigator.clipboard.writeText(link);
       addNotification({
         title: <div className="de-notif_title">Copied to clipboard!</div>,
         message: (
           <div className={"de-notif_msg"}>
             <div>Shareable link generated.</div>
-            <code className={"de-notif_code"}>
-              {window.location.host}/{code}
-            </code>
+            <code className={"de-notif_code"}>{link}</code>
           </div>
         ),
       });
@@ -100,6 +100,14 @@ function App() {
 
   return (
     <div className={"de-dyteditor"}>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Editor_</title>
+        <meta
+          name="description"
+          content="Editor_ | A code editor with live preview."
+        />
+      </Helmet>
       <Notification />
       <Header onShare={() => handleShare()} isSharing={isSharing} />
       <div className="de-editor_window">
