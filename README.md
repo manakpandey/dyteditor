@@ -1,5 +1,5 @@
 # Editor_
-An online code editor with live preview. Try it out [here](https://manakpandey.github.io/dyteditor/).
+An online code editor with live preview. Try it out [here](https://manakpandey.github.io/editor/).
 
 ## Installation
 
